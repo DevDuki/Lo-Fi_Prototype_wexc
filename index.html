@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,116 @@
   <link rel="stylesheet" href="index.css">
   <title>Lo-Fi Prototype</title>
 </head>
+
 <body>
-  
+  <header>
+    <h1>Covid-19 Monitor</h1>
+  </header>
+  <navbar>
+    <nav>
+      <div>
+        <h2>Letzte 24h</h2>
+        <ul>
+          <li>
+            Gesamtfälle
+            <ul>
+              <li>
+                Neu infizierte
+                <ul>
+                  <li>ZG</li>
+                  <li>ZH</li>
+                </ul>
+              </li>
+              <li>
+                Neue Todesfälle
+                <ul>
+                  <li>ZG</li>
+                  <li>ZH</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Total</h2>
+        <ul>
+          <li>
+            Gesamtfälle
+            <ul>
+              <li>
+                Total Infizierte
+                <ul>
+                  <li>ZG</li>
+                  <li>ZH</li>
+                </ul>
+              </li>
+              <li>
+                Total Todesfälle
+                <ul>
+                  <li>ZG</li>
+                  <li>ZH</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
+      <div>
+        <h2>Benutzerdefiniert</h2>
+        <h3>Datum</h3>
+        <label for="start">Von:</label>
+        <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+        <label for="start">Bis:</label>
+        <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+        <ul>
+          <li>
+            Gesamtfälle
+            <ul>
+              <li>
+                Total Infizierte
+                <ul>
+                  <li>ZG</li>
+                  <li>ZH</li>
+                </ul>
+              </li>
+              <li>
+                Total Todesfälle
+                <ul>
+                  <li>ZG</li>
+                  <li>ZH</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </navbar>
+
+  <main>
+    <section>
+      <img src="images/Schweiz.png" alt="Schweiz" width="100" height="100" />
+    </section>
+
+    <section>
+      <h2>03.03.2021 - 03.03.2021</h2>
+      <div>
+        <h3>Barchart 1</h3>
+      </div>
+
+      <div>
+        <h3>Barchart 2</h3>
+      </div>
+    </section>
+
+
+  </main>
   <script src="./index.js"></script>
 </body>
+
 </html>

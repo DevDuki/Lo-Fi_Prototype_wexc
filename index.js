@@ -8,7 +8,7 @@ const data = [
   {
     Kanton: "ZH",
     Falltyp: "Infektion",
-    Datum: new Date()+1 || "yyyy-mm-dd",
+    Datum: new Date() + 1 || "yyyy-mm-dd",
     Count: 150
   },
   {
@@ -17,5 +17,4 @@ const data = [
     Datum: new Date() || "yyyy-mm-dd",
     Count: 25
   },
-  //etc...
 ]
