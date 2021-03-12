@@ -16,26 +16,26 @@
   <header>
     <h1>Covid-19 Monitor</h1>
   </header>
-  <navbar>
+  <navbar class="navbar">
     <nav>
-      <div>
-        <h2>Letzte 24h</h2>
-        <ul>
-          <li>
+      <div class="navbar__24h">
+        <h2 class="navbar__title">Letzte 24h</h2>
+        <ul class="navbar__primary-list">
+          <li class="navbar__total-cases">
             Gesamtfälle
-            <ul>
-              <li>
+            <ul class="navbar__secondary-list">
+              <li class="navbar__infected">
                 Neu infizierte
-                <ul>
-                  <li>ZG</li>
-                  <li>ZH</li>
+                <ul class="nacbar__tertiary-list">
+                  <li class="navbar__canton">ZG</li>
+                  <li class="navbar__canton">ZH</li>
                 </ul>
               </li>
-              <li>
+              <li class="navbar__death">
                 Neue Todesfälle
                 <ul>
-                  <li>ZG</li>
-                  <li>ZH</li>
+                  <li class="navbar__canton">ZG</li>
+                  <li class="navbar__canton">ZH</li>
                 </ul>
               </li>
             </ul>
@@ -43,24 +43,24 @@
         </ul>
       </div>
 
-      <div>
-        <h2>Total</h2>
-        <ul>
-          <li>
+      <div class="navbar__total">
+        <h2 class="navbar__title">Total</h2>
+        <ul class="navbar__primary-list">
+          <li class="navbar__total-cases">
             Gesamtfälle
-            <ul>
-              <li>
-                Total Infizierte
-                <ul>
-                  <li>ZG</li>
-                  <li>ZH</li>
+            <ul class="navbar__secondary-list">
+              <li class="navbar__infected">
+                Total infizierte
+                <ul class="nacbar__tertiary-list">
+                  <li class="navbar__canton">ZG</li>
+                  <li class="navbar__canton">ZH</li>
                 </ul>
               </li>
-              <li>
+              <li class="navbar__death">
                 Total Todesfälle
                 <ul>
-                  <li>ZG</li>
-                  <li>ZH</li>
+                  <li class="navbar__canton">ZG</li>
+                  <li class="navbar__canton">ZH</li>
                 </ul>
               </li>
             </ul>
@@ -68,30 +68,35 @@
         </ul>
       </div>
 
-
-      <div>
-        <h2>Benutzerdefiniert</h2>
-        <h3>Datum</h3>
-        <label for="start">Von:</label>
-        <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
-        <label for="start">Bis:</label>
-        <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
-        <ul>
-          <li>
+      <div class="navbar__user-specific">
+        <h2 class="navbar__title">Benutzerdefiniert</h2>
+        <h3 class="navbar__datepicker-title">Datum</h3>
+        <div class="navbar__datepicker">
+          <div class="navbar__datepicker-from">
+            <label for="start">Von:</label>
+            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+          </div>
+          <div class="navbar__datepicker-until">
+            <label for="start">Bis:</label>
+            <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+          </div>          
+        </div>
+        <ul class="navbar__primary-list">
+          <li class="navbar__total-cases">
             Gesamtfälle
-            <ul>
-              <li>
-                Total Infizierte
-                <ul>
-                  <li>ZG</li>
-                  <li>ZH</li>
+            <ul class="navbar__secondary-list">
+              <li class="navbar__infected">
+                Infizierte
+                <ul class="nacbar__tertiary-list">
+                  <li class="navbar__canton">ZG</li>
+                  <li class="navbar__canton">ZH</li>
                 </ul>
               </li>
-              <li>
-                Total Todesfälle
+              <li class="navbar__death">
+                Todesfälle
                 <ul>
-                  <li>ZG</li>
-                  <li>ZH</li>
+                  <li class="navbar__canton">ZG</li>
+                  <li class="navbar__canton">ZH</li>
                 </ul>
               </li>
             </ul>
@@ -103,18 +108,18 @@
   </navbar>
 
   <main>
-    <section>
-      <img src="images/Schweiz.png" alt="Schweiz" width="100" height="100" />
+    <section class="map">
+      <img class="map__img" src="images/Schweiz.png" alt="Schweiz" width="100" height="100" />
     </section>
 
-    <section>
-      <h2>03.03.2021 - 03.03.2021</h2>
-      <div>
-        <h3>Barchart 1</h3>
+    <section class="barchart">
+      <h2 class="barchart__title">03.03.2021 - 03.03.2021</h2>
+      <div class="barchart__infected">
+        <h3 class="barchart__infected-title">Barchart 1</h3>
       </div>
 
-      <div>
-        <h3>Barchart 2</h3>
+      <div class="barchart__death">
+        <h3 class="barchart__death-title">Barchart 2</h3>
       </div>
     </section>
 
