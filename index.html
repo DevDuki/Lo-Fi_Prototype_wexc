@@ -8,7 +8,7 @@
   <meta name="robots" content="index,follow">
   <meta name="description" content="Lo-Fi Prototype wexc">
   <link rel="icon" href="">
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Lo-Fi Prototype</title>
 </head>
 
@@ -18,22 +18,27 @@
   </header>
   <navbar class="navbar">
     <nav>
+      
       <div class="navbar__24h">
         <h2 class="navbar__title">Letzte 24h</h2>
         <ul class="navbar__primary-list">
-          <li class="navbar__total-cases">
-            Gesamtfälle
+          <li class="navbar__total-cases total-cases-24h">
+            <span class="total-cases-title">Gesamtfälle</span>
             <ul class="navbar__secondary-list">
               <li class="navbar__infected">
-                Neu infizierte
+                <span class="infected-title">Neu infizierte</span>
                 <ul class="navbar__tertiary-list">
+                  <li class="navbar__canton 24h-infected">BS</li>
+                  <li class="navbar__canton 24h-infected">SH</li>
                   <li class="navbar__canton 24h-infected">ZG</li>
                   <li class="navbar__canton 24h-infected">ZH</li>
                 </ul>
               </li>
               <li class="navbar__death">
-                Neue Todesfälle
-                <ul>
+                <span class="death-title">Neue Todesfälle</span>
+                <ul class="navbar__tertiary-list">
+                  <li class="navbar__canton 24h-death">BS</li>
+                  <li class="navbar__canton 24h-death">SH</li>
                   <li class="navbar__canton 24h-death">ZG</li>
                   <li class="navbar__canton 24h-death">ZH</li>
                 </ul>
@@ -47,18 +52,22 @@
         <h2 class="navbar__title">Total</h2>
         <ul class="navbar__primary-list">
           <li class="navbar__total-cases">
-            Gesamtfälle
+            <span class="total-cases-title">Gesamtfälle</span>
             <ul class="navbar__secondary-list">
               <li class="navbar__infected">
-                Total infizierte
-                <ul class="nacbar__tertiary-list">
+                <span class="infected-title">Total infizierte</span>
+                <ul class="navbar__tertiary-list">
+                  <li class="navbar__canton total-infected">BS</li>
+                  <li class="navbar__canton total-infected">SH</li>
                   <li class="navbar__canton total-infected">ZG</li>
                   <li class="navbar__canton total-infected">ZH</li>
                 </ul>
               </li>
               <li class="navbar__death">
-                Total Todesfälle
-                <ul>
+                <span class="death-title">Total Todesfälle</span>
+                <ul class="navbar__tertiary-list">
+                  <li class="navbar__canton total-death">BS</li>
+                  <li class="navbar__canton total-death">SH</li>
                   <li class="navbar__canton total-death">ZG</li>
                   <li class="navbar__canton total-death">ZH</li>
                 </ul>
@@ -72,29 +81,33 @@
         <h2 class="navbar__title">Benutzerdefiniert</h2>
         <h3 class="navbar__datepicker-title">Datum</h3>
         <div class="navbar__datepicker">
-          <div class="navbar__datepicker-from">
+          <div class="navbar__datepicker-from datepicker">
             <label for="start">Von:</label>
             <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
           </div>
-          <div class="navbar__datepicker-until">
+          <div class="navbar__datepicker-until datepicker">
             <label for="start">Bis:</label>
             <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
           </div>          
         </div>
         <ul class="navbar__primary-list">
           <li class="navbar__total-cases">
-            Gesamtfälle
+            <span class="total-cases-title">Gesamtfälle</span>
             <ul class="navbar__secondary-list">
               <li class="navbar__infected">
-                Infizierte
-                <ul class="nacbar__tertiary-list">
+                <span class="infected-title">Infizierte</span>
+                <ul class="navbar__tertiary-list">
+                  <li class="navbar__canton user-spec-infected">BS</li>
+                  <li class="navbar__canton user-spec-infected">SH</li>
                   <li class="navbar__canton user-spec-infected">ZG</li>
                   <li class="navbar__canton user-spec-infected">ZH</li>
                 </ul>
               </li>
               <li class="navbar__death">
-                Todesfälle
-                <ul>
+                <span class="death-title">Todesfälle</span>
+                <ul class="navbar__tertiary-list">
+                  <li class="navbar__canton user-spec-death">BS</li>
+                  <li class="navbar__canton user-spec-death">SH</li>
                   <li class="navbar__canton user-spec-death">ZG</li>
                   <li class="navbar__canton user-spec-death">ZH</li>
                 </ul>
@@ -108,11 +121,14 @@
   </navbar>
 
   <main>
-    <section class="map">
+    <!-- <section class="map">
       <img class="map__img" src="images/Schweiz.png" alt="Schweiz" width="100" height="100" />
-    </section>
+    </section> -->
 
     <section class="barchart">
+      <div id="chart"></div>
+      
+      <!--
       <h2 class="barchart__title">03.03.2021 - 03.03.2021</h2>
       <div class="barchart__infected">
         <h3 class="barchart__infected-title">Barchart 1</h3>
@@ -121,11 +137,13 @@
       <div class="barchart__death">
         <h3 class="barchart__death-title">Barchart 2</h3>
       </div>
+    -->
     </section>
 
 
   </main>
-  <script src="./index.js"></script>
+  <script type="module" src="./barchart.js"></script>
+  <script src="./collapsible.js"></script>
 </body>
 
 </html>

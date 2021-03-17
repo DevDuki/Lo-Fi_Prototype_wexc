@@ -194,5 +194,50 @@ const data = [
     Datum: "2021-02-26",
     Count: 7
   },
+  {
+    Kanton: "Aargau",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 120
+  },
+  {
+    Kanton: "Appenzell Ausserrhoden",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 100
+  },
+  {
+    Kanton: "Appenzell Innerrhoden",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 100
+  },
+  {
+    Kanton: "Basel-Landschaft",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 100
+  },
+  {
+    Kanton: "Basel-Stadt",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 190
+  },
+  {
+    Kanton: "Bern",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 100
+  },
+  {
+    Kanton: "Freiburg",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 100
+  },
+
 
 ]
+
+export default data
