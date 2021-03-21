@@ -35,9 +35,10 @@ infectedMarchData.forEach(data => {
   barrow.setAttribute('class', 'bars');
   const bardata = document.createElement(TDATA);
   const bar = document.createElement('div');
+  const cantonName = data.Kanton;
   bar.style.background = 'red'
   bar.style.height = data.Count.toString() + "px"
-  bardata.innerText = data.Count
+  bardata.innerText = data.Count + '\n' + cantonName 
   bardata.appendChild(bar);
   barrow.appendChild(bardata)
 })

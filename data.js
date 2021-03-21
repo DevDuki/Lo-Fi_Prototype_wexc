@@ -96,13 +96,6 @@ const data = [
     Datum: "2021-02-26",
     Count: 7
   },
-
-  {
-    Kanton: "Basel",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 223
-  },
   {
     Kanton: "Basel",
     Falltyp: "Infektion",
