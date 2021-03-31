@@ -1,14 +1,13 @@
-const totalCases = document.querySelectorAll('.total-cases-title')
-const infectedCases = document.querySelectorAll('.infected-title')
-const deathCases = document.querySelectorAll('.death-title')
+const totalCases    = document.querySelectorAll('.total-cases-title');
+const infectedCases = document.querySelectorAll('.infected-title');
+const deathCases    = document.querySelectorAll('.death-title');
 
-totalCases.forEach(total => {
-    total.addEventListener('click', (e) => {
-        e.stopPropagation()
-
-        toggleCollapse(e.target)
-    })
-})
+totalCases.forEach(element => {
+    element.addEventListener('click', event => {
+        event.stopPropagation(); // otherwise we cannot toggle nested ULs
+        toggleCollapse(element);
+    });
+});
 
 
 infectedCases.forEach(total => {
