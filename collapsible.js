@@ -2,6 +2,16 @@ const totalCases    = document.querySelectorAll('.total-cases-title');
 const infectedCases = document.querySelectorAll('.infected-title');
 const deathCases    = document.querySelectorAll('.death-title');
 
+const toggleCollapse  = element => {
+    const siblingList = element.nextElementSibling; // next sibling is a nested list
+    const display     = siblingList.style.display;
+
+    siblingList.style.display =
+        'none' === display
+            ? 'block'
+            : 'none';
+}
+
 const toggleOnClick = elements =>
     elements.forEach( element =>
         element.addEventListener('click', event => {
@@ -16,13 +26,4 @@ toggleOnClick(infectedCases);
 toggleOnClick(deathCases   );
 
 
-const toggleCollapse = element => {
-    const siblingList = element.nextElementSibling
-    const display = siblingList.style.display
 
-    if(display === 'none'){
-        siblingList.style.display = 'block'
-    } else {
-        siblingList.style.display = 'none'
-    }
-}
