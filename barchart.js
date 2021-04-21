@@ -38,7 +38,7 @@ infectedMarchData.forEach(data => {
   const cantonName = data.Kanton;
   bar.style.background = 'red'
   bar.style.height = data.Count.toString() + "px"
-  bardata.innerText = data.Count + '\n' + cantonName 
+  bardata.innerText = data.Count + '\n' + cantonName
   bardata.appendChild(bar);
   barrow.appendChild(bardata)
 })

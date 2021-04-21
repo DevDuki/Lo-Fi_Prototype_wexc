@@ -1,4 +1,4 @@
-import data from './data.js'
+import { infectedData, deathData } from './dataCleaning.js'
 
 const cantonSelections = document.querySelectorAll('.navbar__canton')
 const chartInfected = document.querySelector('.infected-chart')
@@ -7,7 +7,7 @@ const bubbles = document.querySelectorAll('.bubble')
 
 const coordinates = [
   { canton: 'AG', name: '' },
-  { canton: 'AA', name: '' },
+  { canton: 'AR', name: '' },
   { canton: 'AI', name: '' },
   { canton: 'BL', name: '' },
   { canton: 'BS', name: 'Basel' },
@@ -34,6 +34,10 @@ const coordinates = [
   { canton: 'ZH', name: 'Zürich' },
 ]
 
+const getDataFromCasetype = (caseType) => {
+  if (caseType === 'infected') return infectedData
+  return deathData
+}
 
 
 //* Interaction with navbar
@@ -45,7 +49,7 @@ cantonSelections.forEach(cantonSelection => {
       ? '24h' : element.classList[1].includes('total')
         ? 'total' : 'userSpec'
     const caseType = element.classList[1].includes('infected')
-      ? 'Infektion' : 'Todesfall'
+      ? 'infected' : 'death'
     const canton = event.target.innerHTML
 
     getData(canton, timeFrame, caseType)
@@ -53,20 +57,18 @@ cantonSelections.forEach(cantonSelection => {
 })
 
 const getData = (canton, timeFrame, caseType) => {
+  const data = getDataFromCasetype(caseType)
 
   if (timeFrame === '24h') {
     const filteredData = data
-      .filter(d => d.Falltyp === caseType)
-      .filter(d => d.Datum === "2021-03-01")
+      .filter(d => d.date === '2021-02-15')
 
-    const totalCases = filteredData.reduce((acc, cur) => {
-      return acc + cur.Count
-    }, 0)
+    const highestCount = Math.max(...filteredData.map(d => d.count))
 
     filteredData.forEach(d => {
-      const bubble = document.getElementById(`bubble-${d.Kanton}`)
+      const bubble = document.getElementById(`bubble-${d.canton}`)
 
-      const size = Math.floor(d.Count / (totalCases / 100))
+      const size = Math.floor(d.count / (highestCount / 100))
 
       bubble.style.width = `${15 + size}px`
       bubble.style.height = `${15 + size}px`
@@ -76,12 +78,12 @@ const getData = (canton, timeFrame, caseType) => {
       }
 
       const bubbleCases = bubble.querySelector('.bubble-cases')
-      bubbleCases.innerHTML = d.Count
+      bubbleCases.innerHTML = d.count
 
 
-      const bar = document.getElementById(`bar-${caseType === 'Infektion' ? 'infected' : 'death'}-${d.Kanton}`)
+      const bar = document.getElementById(`bar-${caseType === 'infected' ? 'infected' : 'death'}-${d.canton}`)
 
-      if (caseType === 'Infektion') {
+      if (caseType === 'infected') {
         chartInfected.style.display = 'block'
         chartDeath.style.display = 'none'
       } else {
@@ -95,7 +97,7 @@ const getData = (canton, timeFrame, caseType) => {
       bar.style.gridRowStart = `${100 - size}`
 
       const barCases = bar.querySelector('.bar-cases')
-      barCases.innerHTML = d.Count
+      barCases.innerHTML = d.count
 
     })
   }

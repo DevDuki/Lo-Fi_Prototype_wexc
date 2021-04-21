@@ -1,6 +1,6 @@
 const coordinates = [
   { canton: 'AG', x: '486px', y: '96px' },
-  { canton: 'AA', x: '659px', y: '119px' },
+  { canton: 'AR', x: '659px', y: '119px' },
   { canton: 'AI', x: '708px', y: '140px' },
   { canton: 'BL', x: '420px', y: '115px' },
   { canton: 'BS', x: '392px', y: '74px' },
@@ -8,7 +8,7 @@ const coordinates = [
   { canton: 'FR', x: '320px', y: '271px' },
   { canton: 'GE', x: '167px', y: '390px' },
   { canton: 'GL', x: '637px', y: '211px' },
-  { canton: 'GB', x: '686px', y: '271px' },
+  { canton: 'GR', x: '686px', y: '271px' },
   { canton: 'JU', x: '320px', y: '110px' },
   { canton: 'LU', x: '480px', y: '185px' },
   { canton: 'NE', x: '265px', y: '208px' },
