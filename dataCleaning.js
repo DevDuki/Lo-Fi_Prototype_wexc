@@ -10,6 +10,7 @@ const infectedData = cantonInfectedData.map(data => {
   return {
     canton: data.geoRegion,
     count: data.entries,
+    total: data.sumTotal,
     date: data.datum,
     caseType: 'infected'
   }
@@ -25,6 +26,7 @@ const deathData = cantonDeathData.map(data => {
   return {
     canton: data.geoRegion,
     count: data.entries,
+    total: data.sumTotal,
     date: data.datum,
     caseType: 'death'
   }
