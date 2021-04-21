@@ -1,7 +1,7 @@
 const coordinates = [
   {canton: 'AG' , x: '486px', y: '96px'},
   {canton: 'AA' , x: '659px', y: '119px'},
-  {canton: 'AI' , x: '690px', y: '136px'},
+  {canton: 'AI' , x: '708px', y: '140px'},
   {canton: 'BL' , x: '420px', y: '115px'},
   {canton: 'BS' , x: '392px', y: '74px'},
   {canton: 'BE' , x: '410px', y: '276px'},
@@ -30,7 +30,6 @@ const coordinates = [
 const swissMap = document.querySelector('.swiss-map')
 const redCircle = document.querySelector('.red-circle');
 
-console.log('circle', redCircle)
 
 
 
@@ -38,7 +37,7 @@ console.log('circle', redCircle)
 const createBubble = coordinate => {
   const div = document.createElement('div')
   div.classList.add('bubble')
-  div.id = coordinate.canton
+  div.id = `bubble-${coordinate.canton}`
   div.style.left = coordinate.x
   div.style.top = coordinate.y
   swissMap.appendChild(div)
@@ -55,35 +54,35 @@ redCircle.style.left = '409px'
 
 // For finding the coordinates on the image
 
-// let x, y = 0
+let x, y = 0
 
-// const getXYPos = element => {
-//   x = element.offsetLeft
-//   y = element.offsetTop
+const getXYPos = element => {
+  x = element.offsetLeft
+  y = element.offsetTop
 
-//   element = element.offsetParent
+  element = element.offsetParent
 
-//   while(element != null) {
-//     x = parseInt(x) + parseInt(element.offsetLeft)
-//     y = parseInt(y) + parseInt(element.offsetTop)
-//     element = element.offsetParent
-//   }
+  while(element != null) {
+    x = parseInt(x) + parseInt(element.offsetLeft)
+    y = parseInt(y) + parseInt(element.offsetTop)
+    element = element.offsetParent
+  }
 
-//   return {x, y}
-// }
+  return {x, y}
+}
 
-// const getCoord = (element, event) => {
-//   let xyPos = getXYPos(element)
+const getCoord = (element, event) => {
+  let xyPos = getXYPos(element)
 
-//   x = event.pageX
-//   y = event.pageY
+  x = event.pageX
+  y = event.pageY
 
-//   x = x - xyPos.x;
-//   y = y - xyPos.y;
+  x = x - xyPos.x;
+  y = y - xyPos.y;
 
-//   console.log('x', x, 'y', y)
-// }
+  console.log('x', x, 'y', y)
+}
 
-// swissMap.addEventListener('click', (event) => {
-//   getCoord(swissMap, event)
-// })
+swissMap.addEventListener('click', (event) => {
+  getCoord(swissMap, event)
+})

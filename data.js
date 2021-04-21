@@ -1,236 +1,198 @@
 const data = [
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Infektion",
     Datum: "2021-03-01", // yyyy-mm-dd
     Count: 250
   },
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Infektion",
     Datum: "2021-02-28",
     Count: 225
   },
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Infektion",
     Datum: "2021-02-27",
     Count: 100
   },
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Infektion",
     Datum: "2021-02-26",
     Count: 190
   },
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Todesfall",
     Datum: "2021-03-01",
     Count: 50
   },
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Todesfall",
     Datum: "2021-02-28",
     Count: 10
   },
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Todesfall",
     Datum: "2021-02-27",
     Count: 12
   },
   {
-    Kanton: "Zürich",
+    Kanton: "ZH",
     Falltyp: "Todesfall",
     Datum: "2021-02-26",
     Count: 28
   },
   
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Infektion",
     Datum: "2021-03-01",
     Count: 170
   },
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Infektion",
     Datum: "2021-02-28",
     Count: 162
   },
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Infektion",
     Datum: "2021-02-27",
     Count: 111
   },
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Infektion",
     Datum: "2021-02-26",
     Count: 96
   },
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Todesfall",
     Datum: "2021-03-01",
     Count: 12
   },
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Todesfall",
     Datum: "2021-02-28",
     Count: 9
   },
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Todesfall",
     Datum: "2021-02-27",
     Count: 5
   },
   {
-    Kanton: "Zug",
+    Kanton: "ZG",
     Falltyp: "Todesfall",
     Datum: "2021-02-26",
     Count: 7
   },
   {
-    Kanton: "Basel",
+    Kanton: "BS",
+    Falltyp: "Infektion",
+    Datum: "2021-03-01",
+    Count: 198
+  },
+  {
+    Kanton: "BS",
     Falltyp: "Infektion",
     Datum: "2021-02-28",
     Count: 198
   },
   {
-    Kanton: "Basel",
+    Kanton: "BS",
     Falltyp: "Infektion",
     Datum: "2021-02-27",
     Count: 142
   },
   {
-    Kanton: "Basel",
+    Kanton: "BS",
     Falltyp: "Infektion",
     Datum: "2021-02-26",
     Count: 203
   },
   {
-    Kanton: "Basel",
+    Kanton: "BS",
     Falltyp: "Todesfall",
     Datum: "2021-03-01",
     Count: 12
   },
   {
-    Kanton: "Basel",
+    Kanton: "BS",
     Falltyp: "Todesfall",
     Datum: "2021-02-28",
     Count: 9
   },
   {
-    Kanton: "Basel",
+    Kanton: "BS",
     Falltyp: "Todesfall",
     Datum: "2021-02-27",
     Count: 8
   },
   {
-    Kanton: "Basel",
+    Kanton: "BS",
     Falltyp: "Todesfall",
     Datum: "2021-02-26",
     Count: 19
   },
 
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Infektion",
     Datum: "2021-03-01",
     Count: 123
   },
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Infektion",
     Datum: "2021-02-28",
     Count: 182
   },
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Infektion",
     Datum: "2021-02-27",
     Count: 122
   },
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Infektion",
     Datum: "2021-02-26",
     Count: 179
   },
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Todesfall",
     Datum: "2021-03-01",
     Count: 6
   },
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Todesfall",
     Datum: "2021-02-28",
     Count: 1
   },
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Todesfall",
     Datum: "2021-02-27",
     Count: 0
   },
   {
-    Kanton: "Schaffhausen",
+    Kanton: "SH",
     Falltyp: "Todesfall",
     Datum: "2021-02-26",
     Count: 7
   },
-  {
-    Kanton: "Aargau",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 120
-  },
-  {
-    Kanton: "Appenzell Ausserrhoden",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 100
-  },
-  {
-    Kanton: "Appenzell Innerrhoden",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 100
-  },
-  {
-    Kanton: "Basel-Landschaft",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 100
-  },
-  {
-    Kanton: "Basel-Stadt",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 190
-  },
-  {
-    Kanton: "Bern",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 100
-  },
-  {
-    Kanton: "Freiburg",
-    Falltyp: "Infektion",
-    Datum: "2021-03-01",
-    Count: 100
-  },
-
-
 ]
 
 export default data
