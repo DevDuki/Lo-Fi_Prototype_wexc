@@ -5,7 +5,6 @@ html {
 
 *, *::before, *::after {
   box-sizing: inherit;
-  margin: 0;
   padding: 0;
 }
 
@@ -20,7 +19,6 @@ main {
 }
 
 ul {
-  margin: 0;
   padding: 0;
   padding-left: 3rem;
 }
@@ -80,6 +78,10 @@ section.barchart {
   border-radius: 15px;
 }
 
+.death-chart {
+  display: none;
+}
+
 section.barchart h2 {
   padding-top: 1rem;
 }
@@ -99,7 +101,7 @@ section.barchart h2 {
   grid-row-start: 1;
   grid-row-end: 101;
   border-radius: 5px 5px 0 0;
-  background-color: black;
+  background-color: gray;
   text-align: center;
 }
 
@@ -137,12 +139,15 @@ section.barchart h2 {
 }
 
 .bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: red;
-  display: inline;
+  background-color: gray;
   z-index: 99;
   transform: translate(-50%, -50%);
   /* top: 0;
@@ -150,7 +155,15 @@ section.barchart h2 {
 }
 
 .bubble:hover {
-  opacity: 0.2;
+  opacity: 0.8;
+}
+
+.bubble-canton {
+  font-size: 11px;
+}
+
+.bubble-cases {
+  font-size: 15px;
 }
 
 /* #chart {

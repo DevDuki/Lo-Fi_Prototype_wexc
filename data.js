@@ -47,7 +47,7 @@ const data = [
     Datum: "2021-02-26",
     Count: 28
   },
-  
+
   {
     Kanton: "ZG",
     Falltyp: "Infektion",
@@ -125,6 +125,12 @@ const data = [
     Falltyp: "Todesfall",
     Datum: "2021-03-01",
     Count: 12
+  },
+  {
+    Kanton: "BS",
+    Falltyp: "Todesfall",
+    Datum: "2021-03-01",
+    Count: 9
   },
   {
     Kanton: "BS",
