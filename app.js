@@ -47,7 +47,7 @@ cantonSelections.forEach(cantonSelection => {
     const element = event.target
     const timeFrame = element.classList[1].includes('24h')
       ? '24h' : element.classList[1].includes('total')
-        ? 'total' : 'userSpec'
+      ? 'total' : 'userSpec'
     const caseType = element.classList[1].includes('infected')
       ? 'infected' : 'death'
     const canton = event.target.innerHTML

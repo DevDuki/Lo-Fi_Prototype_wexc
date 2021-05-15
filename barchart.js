@@ -10,7 +10,7 @@ const colors = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 
 
 //constants
 const TROW = 'tr',
-  TDATA = 'td';
+      TDATA = 'td';
 
 const chart = document.createElement('div');
 //create the chart canvas
