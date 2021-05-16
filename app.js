@@ -1,16 +1,19 @@
 import { infectedData, deathData } from './dataCleaning.js'
+import getDatesBetweenDates from './util/dateUtil.js'
 
 const cantonSelections = document.querySelectorAll('.navbar__canton')
 const chartInfected = document.querySelector('.infected-chart')
 const chartDeath = document.querySelector('.death-chart')
 const bubbles = document.querySelectorAll('.bubble')
+const inputDateFrom = document.getElementById('date-from')
+const inputDateTo = document.getElementById('date-to')
 
 const coordinates = [
-  { canton: 'AG', name: '' },
-  { canton: 'AR', name: '' },
-  { canton: 'AI', name: '' },
-  { canton: 'BL', name: '' },
-  { canton: 'BS', name: 'Basel' },
+  { canton: 'AG', name: 'Aargau' },
+  { canton: 'AR', name: 'Appenzell A.' },
+  { canton: 'AI', name: 'Appenzell I.' },
+  { canton: 'BL', name: 'Basel-Land' },
+  { canton: 'BS', name: 'Basel-Stadt' },
   { canton: 'BE', name: 'Bern' },
   { canton: 'FR', name: 'Freiburg' },
   { canton: 'GE', name: 'Genf' },
@@ -50,56 +53,82 @@ cantonSelections.forEach(cantonSelection => {
       ? 'total' : 'userSpec'
     const caseType = element.classList[1].includes('infected')
       ? 'infected' : 'death'
-    const canton = event.target.innerHTML
+    const canton = element.innerHTML
 
     getData(canton, timeFrame, caseType)
   })
 })
 
-const getData = (canton, timeFrame, caseType) => {
+const updateUI = (data, selectedCanton, caseType) => {
+  const highestCount = Math.max(...data.map(d => d.count))
+  console.log(data)
+
+  data.forEach(d => {
+    const bubble = document.getElementById(`bubble-${d.canton}`)
+
+    const size = Math.floor(d.count / (highestCount / 100))
+
+    bubble.style.width = `${15 + size}px`
+    bubble.style.height = `${15 + size}px`
+    bubble.style.backgroundColor = 'gray'
+    if (bubble.id.includes(selectedCanton)) {
+      bubble.style.backgroundColor = 'blue'
+    }
+
+    const bubbleCases = bubble.querySelector('.bubble-cases')
+    bubbleCases.innerHTML = d.count
+
+
+    const bar = document.getElementById(`bar-${caseType === 'infected' ? 'infected' : 'death'}-${d.canton}`)
+
+    if (caseType === 'infected') {
+      chartInfected.style.display = 'block'
+      chartDeath.style.display = 'none'
+    } else {
+      chartInfected.style.display = 'none'
+      chartDeath.style.display = 'block'
+    }
+    bar.style.backgroundColor = 'gray'
+    if (bar.id.includes(selectedCanton)) {
+      bar.style.backgroundColor = 'blue'
+    }
+    bar.style.gridRowStart = `${100 - size}`
+
+    const barCases = bar.querySelector('.bar-cases')
+    barCases.innerHTML = d.count
+
+  })
+}
+
+const getData = (selectedCanton, timeFrame, caseType) => {
   const data = getDataFromCasetype(caseType)
 
   if (timeFrame === '24h') {
     const filteredData = data
-      .filter(d => d.date === '2021-02-15')
+      .filter(d => d.date === '2021-02-15') //TODO: Replace with today's date
 
-    const highestCount = Math.max(...filteredData.map(d => d.count))
+    updateUI(filteredData, selectedCanton, caseType)
+  } else if (timeFrame === 'total'){
+    const filteredData = data
+      .filter(d => d.date === '2021-02-15') //TODO: Replace with today's date
+      .map(d => {
+        return {
+          ...d,
+          count: d.total
+        }
+      })
 
-    filteredData.forEach(d => {
-      const bubble = document.getElementById(`bubble-${d.canton}`)
+    updateUI(filteredData, selectedCanton, caseType)
+  } else {
+    const startDate = inputDateFrom.value
+    const endDate = inputDateTo.value
 
-      const size = Math.floor(d.count / (highestCount / 100))
+    const dates = getDatesBetweenDates(startDate, endDate)
 
-      bubble.style.width = `${15 + size}px`
-      bubble.style.height = `${15 + size}px`
-      bubble.style.backgroundColor = 'gray'
-      if (bubble.id.includes(canton)) {
-        bubble.style.backgroundColor = 'blue'
-      }
-
-      const bubbleCases = bubble.querySelector('.bubble-cases')
-      bubbleCases.innerHTML = d.count
-
-
-      const bar = document.getElementById(`bar-${caseType === 'infected' ? 'infected' : 'death'}-${d.canton}`)
-
-      if (caseType === 'infected') {
-        chartInfected.style.display = 'block'
-        chartDeath.style.display = 'none'
-      } else {
-        chartInfected.style.display = 'none'
-        chartDeath.style.display = 'block'
-      }
-      bar.style.backgroundColor = 'gray'
-      if (bar.id.includes(canton)) {
-        bar.style.backgroundColor = 'blue'
-      }
-      bar.style.gridRowStart = `${100 - size}`
-
-      const barCases = bar.querySelector('.bar-cases')
-      barCases.innerHTML = d.count
-
+    const filteredData = data.filter(d => {
+      //TODO: Filter data to the date range and reduce the total count of incidence
     })
+    console.log(dates)
   }
 }
 
@@ -145,7 +174,7 @@ const updateBarChart = (chartContainer, selectedCanton) => {
 //* Interaction with chart
 
 
-// Infected Chart
+// Chart
 const getBarsInArray = (parent) => {
   const bars = parent.querySelector('.chart').children
   return [...bars]

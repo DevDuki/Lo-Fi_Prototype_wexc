@@ -27,7 +27,7 @@
             <ul class="navbar__secondary-list">
               <li class="navbar__infected">
                 <span class="infected-title">Neu infizierte</span>
-                <ul class="navbar__tertiary-list">
+                <ul class="navbar__tertiary-list 24h-infected-canton-ul">
                   <li class="navbar__canton 24h-infected">BS</li>
                   <li class="navbar__canton 24h-infected">SH</li>
                   <li class="navbar__canton 24h-infected">ZG</li>
@@ -36,7 +36,7 @@
               </li>
               <li class="navbar__death">
                 <span class="death-title">Neue Todesfälle</span>
-                <ul class="navbar__tertiary-list">
+                <ul class="navbar__tertiary-list 24h-death-canton-ul">
                   <li class="navbar__canton 24h-death">BS</li>
                   <li class="navbar__canton 24h-death">SH</li>
                   <li class="navbar__canton 24h-death">ZG</li>
@@ -58,7 +58,7 @@
             <ul class="navbar__secondary-list">
               <li class="navbar__infected">
                 <span class="infected-title">Total infizierte</span>
-                <ul class="navbar__tertiary-list">
+                <ul class="navbar__tertiary-list total-infected-canton-ul">
                   <li class="navbar__canton total-infected">BS</li>
                   <li class="navbar__canton total-infected">SH</li>
                   <li class="navbar__canton total-infected">ZG</li>
@@ -67,7 +67,7 @@
               </li>
               <li class="navbar__death">
                 <span class="death-title">Total Todesfälle</span>
-                <ul class="navbar__tertiary-list">
+                <ul class="navbar__tertiary-list total-death-canton-ul">
                   <li class="navbar__canton total-death">BS</li>
                   <li class="navbar__canton total-death">SH</li>
                   <li class="navbar__canton total-death">ZG</li>
@@ -86,12 +86,12 @@
         <h3 class="navbar__datepicker-title">Datum</h3>
         <div class="navbar__datepicker">
           <div class="navbar__datepicker-from datepicker">
-            <label for="trip-start">Von:</label>
-            <input type="date" id="trip-start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+            <label for="date-from">Von:</label>
+            <input type="date" id="date-from" name="date-from" value="2021-01-01" min="2020-01-01">
           </div>
-          <div class="navbar__datepicker-until datepicker">
-            <label for="trip-end">Bis:</label>
-            <input type="date" id="trip-end" name="trip-end" value="2018-07-22" min="2018-01-01" max="2018-12-31">
+          <div class="navbar__datepicker-to datepicker">
+            <label for="date-to">Bis:</label>
+            <input type="date" id="date-to" name="date-to" value="2021-04-01" min="2020-01-01">
           </div>
         </div>
         <ul class="navbar__primary-list">
@@ -100,7 +100,7 @@
             <ul class="navbar__secondary-list">
               <li class="navbar__infected">
                 <span class="infected-title">Infizierte</span>
-                <ul class="navbar__tertiary-list">
+                <ul class="navbar__tertiary-list user-spec-infected-canton-ul">
                   <li class="navbar__canton user-spec-infected">BS</li>
                   <li class="navbar__canton user-spec-infected">SH</li>
                   <li class="navbar__canton user-spec-infected">ZG</li>
@@ -109,7 +109,7 @@
               </li>
               <li class="navbar__death">
                 <span class="death-title">Todesfälle</span>
-                <ul class="navbar__tertiary-list">
+                <ul class="navbar__tertiary-list user-spec-death-canton-ul">
                   <li class="navbar__canton user-spec-death">BS</li>
                   <li class="navbar__canton user-spec-death">SH</li>
                   <li class="navbar__canton user-spec-death">ZG</li>
@@ -275,6 +275,8 @@
 
   </main>
   <!-- <script type="module" src="./barchart.js"></script> -->
+  
+  <script src="./nav.js"></script>
   <script type="module" src="./dataCleaning.js"></script>
   <script src="./collapsible.js"></script>
   <script src="./bubbleMap.js"></script>
