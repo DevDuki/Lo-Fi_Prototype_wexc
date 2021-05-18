@@ -21,6 +21,7 @@ main {
 ul {
   padding: 0;
   padding-left: 3rem;
+  transition: all 0.15s ease-in-out;
 }
 
 .nav-section {
@@ -89,41 +90,43 @@ section.barchart h2 {
 .chart {
   display: grid;
   grid-template-columns: repeat(26, 1fr);
-  grid-template-rows: repeat(100, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  align-items: end;
   grid-column-gap: 5px;
   height: 150px;
   width: 900px;
   margin: 2rem 0;
+  transition: all 0.2s ease-in-out;
 }
 
 .chart div {
   position: relative;
-  grid-row-start: 1;
-  grid-row-end: 101;
+  height: 0%;
+  min-height: 2%;
   border-radius: 5px 5px 0 0;
   background-color: gray;
   text-align: center;
+  transition: all 0.2s ease-in-out;
 }
 
-.chart div:first-child {
-  grid-row-start: 21;
-}
-
-.chart div:nth-child(even) {
-  grid-row-start: 36;
+.chart div:hover {
+  opacity: 0.8;
 }
 
 .chart > div > span:first-child {
   position: absolute;
-  bottom: 0;
+  top: 100%;
   right: 50%;
   transform: translate(50%);
   font-size: 0.75rem;
-  color: white;
+  color: rgb(78, 78, 78);
 }
 
 .chart > div > span:last-child {
-  color: white;
+  color: #353535;
+  position: absolute;
+  transform: translate(-50%);
+  bottom: 100%;
 }
 
 .swiss-map{
@@ -148,10 +151,8 @@ section.barchart h2 {
   height: 60px;
   border-radius: 50%;
   background-color: gray;
-  z-index: 99;
   transform: translate(-50%, -50%);
-  /* top: 0;
-  left: 0; */
+  transition: all 0.2s ease-in-out;
 }
 
 .bubble:hover {

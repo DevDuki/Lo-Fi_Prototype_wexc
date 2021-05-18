@@ -21,13 +21,13 @@
       </header>
       <div class="navbar__24h nav-section">
         <h2 class="navbar__title">Letzte 24h</h2>
-        <ul class="navbar__primary-list">
+        <ul id="24h-list" class="navbar__primary-list">
           <li class="navbar__total-cases total-cases-24h">
-            <span class="total-cases-title">Gesamtfälle</span>
-            <ul class="navbar__secondary-list">
+            <span class="total-cases-title">Total Fälle</span>
+            <ul class="navbar__secondary-list" style="display: block;opacity: 1;">
               <li class="navbar__infected">
                 <span class="infected-title">Neu infizierte</span>
-                <ul class="navbar__tertiary-list 24h-infected-canton-ul">
+                <ul class="navbar__tertiary-list 24h-infected-canton-ul" style="display: none;opacity: 0;">
                   <li class="navbar__canton 24h-infected">BS</li>
                   <li class="navbar__canton 24h-infected">SH</li>
                   <li class="navbar__canton 24h-infected">ZG</li>
@@ -36,7 +36,7 @@
               </li>
               <li class="navbar__death">
                 <span class="death-title">Neue Todesfälle</span>
-                <ul class="navbar__tertiary-list 24h-death-canton-ul">
+                <ul class="navbar__tertiary-list 24h-death-canton-ul" style="display: none;opacity: 0;">
                   <li class="navbar__canton 24h-death">BS</li>
                   <li class="navbar__canton 24h-death">SH</li>
                   <li class="navbar__canton 24h-death">ZG</li>
@@ -52,13 +52,13 @@
 
       <div class="navbar__total nav-section">
         <h2 class="navbar__title">Total</h2>
-        <ul class="navbar__primary-list">
+        <ul id="total-list" class="navbar__primary-list">
           <li class="navbar__total-cases">
-            <span class="total-cases-title">Gesamtfälle</span>
-            <ul class="navbar__secondary-list">
+            <span class="total-cases-title">Total Fälle</span>
+            <ul class="navbar__secondary-list" style="display: block;opacity: 1;">
               <li class="navbar__infected">
                 <span class="infected-title">Total infizierte</span>
-                <ul class="navbar__tertiary-list total-infected-canton-ul">
+                <ul class="navbar__tertiary-list total-infected-canton-ul" style="display: none;opacity: 0;">
                   <li class="navbar__canton total-infected">BS</li>
                   <li class="navbar__canton total-infected">SH</li>
                   <li class="navbar__canton total-infected">ZG</li>
@@ -67,7 +67,7 @@
               </li>
               <li class="navbar__death">
                 <span class="death-title">Total Todesfälle</span>
-                <ul class="navbar__tertiary-list total-death-canton-ul">
+                <ul class="navbar__tertiary-list total-death-canton-ul" style="display: none;opacity: 0;">
                   <li class="navbar__canton total-death">BS</li>
                   <li class="navbar__canton total-death">SH</li>
                   <li class="navbar__canton total-death">ZG</li>
@@ -87,20 +87,20 @@
         <div class="navbar__datepicker">
           <div class="navbar__datepicker-from datepicker">
             <label for="date-from">Von:</label>
-            <input type="date" id="date-from" name="date-from" value="2021-01-01" min="2020-01-01">
+            <input type="date" id="date-from" name="date-from" value="2020-08-01" min="2020-02-24" max="2021-02-15">
           </div>
           <div class="navbar__datepicker-to datepicker">
             <label for="date-to">Bis:</label>
-            <input type="date" id="date-to" name="date-to" value="2021-04-01" min="2020-01-01">
+            <input type="date" id="date-to" name="date-to" value="2021-02-01" min="2020-02-24" max="2021-02-15">
           </div>
         </div>
-        <ul class="navbar__primary-list">
+        <ul id="user-spec-list" class="navbar__primary-list">
           <li class="navbar__total-cases">
-            <span class="total-cases-title">Gesamtfälle</span>
-            <ul class="navbar__secondary-list">
+            <span class="total-cases-title">Total Fälle</span>
+            <ul class="navbar__secondary-list" style="display: block;opacity: 1;">
               <li class="navbar__infected">
                 <span class="infected-title">Infizierte</span>
-                <ul class="navbar__tertiary-list user-spec-infected-canton-ul">
+                <ul class="navbar__tertiary-list user-spec-infected-canton-ul" style="display: none;opacity: 0;">
                   <li class="navbar__canton user-spec-infected">BS</li>
                   <li class="navbar__canton user-spec-infected">SH</li>
                   <li class="navbar__canton user-spec-infected">ZG</li>
@@ -109,7 +109,7 @@
               </li>
               <li class="navbar__death">
                 <span class="death-title">Todesfälle</span>
-                <ul class="navbar__tertiary-list user-spec-death-canton-ul">
+                <ul class="navbar__tertiary-list user-spec-death-canton-ul" style="display: none;opacity: 0;">
                   <li class="navbar__canton user-spec-death">BS</li>
                   <li class="navbar__canton user-spec-death">SH</li>
                   <li class="navbar__canton user-spec-death">ZG</li>
@@ -128,7 +128,6 @@
     <section class="map">
       <div class="swiss-map">
         <img class="map__img" src="./images/schweiz-map.png" alt="Schweiz" />
-        <div class="red-circle"></div>
       </div>
 
 
@@ -140,116 +139,57 @@
         <h2>Infizierte</h2>
         <h3>01.03.21 - 03.03.21</h3>
         <div class="chart">
-          <div id="bar-infected-AG" class="bar-1"><span class="bar-canton">AG</span><span class="bar-cases">999</span>
+          <div id="bar-infected-AG" class="bar-1"><span class="bar-canton">AG</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-AR" class="bar-2"><span class="bar-canton">AR</span><span class="bar-cases">999</span>
+          <div id="bar-infected-AR" class="bar-2"><span class="bar-canton">AR</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-AI" class="bar-3"><span class="bar-canton">AI</span><span class="bar-cases">999</span>
+          <div id="bar-infected-AI" class="bar-3"><span class="bar-canton">AI</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-BL" class="bar-4"><span class="bar-canton">BL</span><span class="bar-cases">999</span>
+          <div id="bar-infected-BL" class="bar-4"><span class="bar-canton">BL</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-BS" class="bar-5"><span class="bar-canton">BS</span><span class="bar-cases">999</span>
+          <div id="bar-infected-BS" class="bar-5"><span class="bar-canton">BS</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-BE" class="bar-6"><span class="bar-canton">BE</span><span class="bar-cases">999</span>
+          <div id="bar-infected-BE" class="bar-6"><span class="bar-canton">BE</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-FR" class="bar-7"><span class="bar-canton">FR</span><span class="bar-cases">999</span>
+          <div id="bar-infected-FR" class="bar-7"><span class="bar-canton">FR</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-GE" class="bar-8"><span class="bar-canton">GE</span><span class="bar-cases">999</span>
+          <div id="bar-infected-GE" class="bar-8"><span class="bar-canton">GE</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-GL" class="bar-9"><span class="bar-canton">GL</span><span class="bar-cases">999</span>
+          <div id="bar-infected-GL" class="bar-9"><span class="bar-canton">GL</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-GR" class="bar-10"><span class="bar-canton">GR</span><span class="bar-cases">900</span>
+          <div id="bar-infected-GR" class="bar-10"><span class="bar-canton">GR</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-JU" class="bar-11"><span class="bar-canton">JU</span><span class="bar-cases">900</span>
+          <div id="bar-infected-JU" class="bar-11"><span class="bar-canton">JU</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-LU" class="bar-12"><span class="bar-canton">LU</span><span class="bar-cases">900</span>
+          <div id="bar-infected-LU" class="bar-12"><span class="bar-canton">LU</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-NE" class="bar-13"><span class="bar-canton">NE</span><span class="bar-cases">900</span>
+          <div id="bar-infected-NE" class="bar-13"><span class="bar-canton">NE</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-NW" class="bar-14"><span class="bar-canton">NW</span><span class="bar-cases">900</span>
+          <div id="bar-infected-NW" class="bar-14"><span class="bar-canton">NW</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-OW" class="bar-15"><span class="bar-canton">OW</span><span class="bar-cases">900</span>
+          <div id="bar-infected-OW" class="bar-15"><span class="bar-canton">OW</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-SH" class="bar-16"><span class="bar-canton">SH</span><span class="bar-cases">500</span>
+          <div id="bar-infected-SH" class="bar-16"><span class="bar-canton">SH</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-SZ" class="bar-17"><span class="bar-canton">SZ</span><span class="bar-cases">500</span>
+          <div id="bar-infected-SZ" class="bar-17"><span class="bar-canton">SZ</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-SO" class="bar-18"><span class="bar-canton">SO</span><span class="bar-cases">500</span>
+          <div id="bar-infected-SO" class="bar-18"><span class="bar-canton">SO</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-SG" class="bar-19"><span class="bar-canton">SG</span><span class="bar-cases">500</span>
+          <div id="bar-infected-SG" class="bar-19"><span class="bar-canton">SG</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-TI" class="bar-20"><span class="bar-canton">TI</span><span class="bar-cases">500</span>
+          <div id="bar-infected-TI" class="bar-20"><span class="bar-canton">TI</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-TG" class="bar-21"><span class="bar-canton">TG</span><span class="bar-cases">999</span>
+          <div id="bar-infected-TG" class="bar-21"><span class="bar-canton">TG</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-UR" class="bar-22"><span class="bar-canton">UR</span><span class="bar-cases">900</span>
+          <div id="bar-infected-UR" class="bar-22"><span class="bar-canton">UR</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-VD" class="bar-23"><span class="bar-canton">VD</span><span class="bar-cases">999</span>
+          <div id="bar-infected-VD" class="bar-23"><span class="bar-canton">VD</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-VS" class="bar-24"><span class="bar-canton">VS</span><span class="bar-cases">999</span>
+          <div id="bar-infected-VS" class="bar-24"><span class="bar-canton">VS</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-ZG" class="bar-25"><span class="bar-canton">ZG</span><span class="bar-cases">500</span>
+          <div id="bar-infected-ZG" class="bar-25"><span class="bar-canton">ZG</span><span class="bar-cases"></span>
           </div>
-          <div id="bar-infected-ZH" class="bar-26"><span class="bar-canton">ZH</span><span class="bar-cases">500</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="chart-table death-chart">
-        <h2>Todesfälle</h2>
-        <h3>01.03.21 - 03.03.21</h3>
-        <div class="chart">
-          <div id="bar-death-AG" class="bar-1"><span class="bar-canton">AG</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-AR" class="bar-2"><span class="bar-canton">AA</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-AI" class="bar-3"><span class="bar-canton">AI</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-BL" class="bar-4"><span class="bar-canton">BL</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-BS" class="bar-5"><span class="bar-canton">BS</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-BE" class="bar-6"><span class="bar-canton">BE</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-FR" class="bar-7"><span class="bar-canton">FR</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-GE" class="bar-8"><span class="bar-canton">GE</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-GL" class="bar-9"><span class="bar-canton">GL</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-GR" class="bar-10"><span class="bar-canton">GB</span><span class="bar-cases">900</span>
-          </div>
-          <div id="bar-death-JU" class="bar-11"><span class="bar-canton">JU</span><span class="bar-cases">900</span>
-          </div>
-          <div id="bar-death-LU" class="bar-12"><span class="bar-canton">LU</span><span class="bar-cases">900</span>
-          </div>
-          <div id="bar-death-NE" class="bar-13"><span class="bar-canton">NE</span><span class="bar-cases">900</span>
-          </div>
-          <div id="bar-death-NW" class="bar-14"><span class="bar-canton">NW</span><span class="bar-cases">900</span>
-          </div>
-          <div id="bar-death-OW" class="bar-15"><span class="bar-canton">OW</span><span class="bar-cases">900</span>
-          </div>
-          <div id="bar-death-SH" class="bar-16"><span class="bar-canton">SH</span><span class="bar-cases">500</span>
-          </div>
-          <div id="bar-death-SZ" class="bar-17"><span class="bar-canton">SZ</span><span class="bar-cases">500</span>
-          </div>
-          <div id="bar-death-SO" class="bar-18"><span class="bar-canton">SO</span><span class="bar-cases">500</span>
-          </div>
-          <div id="bar-death-SG" class="bar-19"><span class="bar-canton">SG</span><span class="bar-cases">500</span>
-          </div>
-          <div id="bar-death-TI" class="bar-20"><span class="bar-canton">TI</span><span class="bar-cases">500</span>
-          </div>
-          <div id="bar-death-TG" class="bar-21"><span class="bar-canton">TG</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-UR" class="bar-22"><span class="bar-canton">UR</span><span class="bar-cases">900</span>
-          </div>
-          <div id="bar-death-VD" class="bar-23"><span class="bar-canton">VD</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-VS" class="bar-24"><span class="bar-canton">VS</span><span class="bar-cases">999</span>
-          </div>
-          <div id="bar-death-ZG" class="bar-25"><span class="bar-canton">ZG</span><span class="bar-cases">500</span>
-          </div>
-          <div id="bar-death-ZH" class="bar-26"><span class="bar-canton">ZH</span><span class="bar-cases">500</span>
+          <div id="bar-infected-ZH" class="bar-26"><span class="bar-canton">ZH</span><span class="bar-cases"></span>
           </div>
         </div>
       </div>
@@ -276,7 +216,7 @@
   </main>
   <!-- <script type="module" src="./barchart.js"></script> -->
   
-  <script src="./nav.js"></script>
+  <script type="module" src="./nav.js"></script>
   <script type="module" src="./dataCleaning.js"></script>
   <script src="./collapsible.js"></script>
   <script src="./bubbleMap.js"></script>

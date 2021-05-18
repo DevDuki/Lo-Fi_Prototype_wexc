@@ -5,11 +5,20 @@ const deathCases    = document.querySelectorAll('.death-title');
 const toggleCollapse  = element => {
     const siblingList = element.nextElementSibling; // next sibling is a nested list
     const display     = siblingList.style.display;
+    const opacity     = siblingList.style.opacity;
 
     siblingList.style.display =
         'none' === display
             ? 'block'
             : 'none';
+
+    setTimeout(() => {
+        siblingList.style.opacity =
+            '1' === opacity
+                ? '0'
+                : '1'
+    }, 200)
+    
 }
 
 const toggleOnClick = elements =>

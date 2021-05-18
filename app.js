@@ -1,40 +1,39 @@
 import { infectedData, deathData } from './dataCleaning.js'
-import getDatesBetweenDates from './util/dateUtil.js'
 
 const cantonSelections = document.querySelectorAll('.navbar__canton')
 const chartInfected = document.querySelector('.infected-chart')
-const chartDeath = document.querySelector('.death-chart')
+// const chartDeath = document.querySelector('.death-chart')
 const bubbles = document.querySelectorAll('.bubble')
 const inputDateFrom = document.getElementById('date-from')
 const inputDateTo = document.getElementById('date-to')
 
-const coordinates = [
-  { canton: 'AG', name: 'Aargau' },
-  { canton: 'AR', name: 'Appenzell A.' },
-  { canton: 'AI', name: 'Appenzell I.' },
-  { canton: 'BL', name: 'Basel-Land' },
-  { canton: 'BS', name: 'Basel-Stadt' },
-  { canton: 'BE', name: 'Bern' },
-  { canton: 'FR', name: 'Freiburg' },
-  { canton: 'GE', name: 'Genf' },
-  { canton: 'GL', name: 'Glarus' },
-  { canton: 'GR', name: 'Graubünden' },
-  { canton: 'JU', name: 'Jura' },
-  { canton: 'LU', name: 'Luzern' },
-  { canton: 'NE', name: 'Neuenburg' },
-  { canton: 'NW', name: 'Nidwalden' },
-  { canton: 'OW', name: 'Obwalden' },
-  { canton: 'SH', name: 'Schaffhausen' },
-  { canton: 'SZ', name: 'Schwyz' },
-  { canton: 'SO', name: 'Solothurn' },
-  { canton: 'SG', name: 'St.Gallen' },
-  { canton: 'TI', name: 'Tessin' },
-  { canton: 'TG', name: 'Thurgau' },
-  { canton: 'UR', name: 'Uri' },
-  { canton: 'VD', name: 'Waadt' },
-  { canton: 'VS', name: 'Wallis' },
-  { canton: 'ZG', name: 'Zug' },
-  { canton: 'ZH', name: 'Zürich' },
+const cantons = [
+  { abbr: 'AG', name: 'Aargau' },
+  { abbr: 'AR', name: 'Appenzell A.' },
+  { abbr: 'AI', name: 'Appenzell I.' },
+  { abbr: 'BL', name: 'Basel-Land' },
+  { abbr: 'BS', name: 'Basel-Stadt' },
+  { abbr: 'BE', name: 'Bern' },
+  { abbr: 'FR', name: 'Freiburg' },
+  { abbr: 'GE', name: 'Genf' },
+  { abbr: 'GL', name: 'Glarus' },
+  { abbr: 'GR', name: 'Graubünden' },
+  { abbr: 'JU', name: 'Jura' },
+  { abbr: 'LU', name: 'Luzern' },
+  { abbr: 'NE', name: 'Neuenburg' },
+  { abbr: 'NW', name: 'Nidwalden' },
+  { abbr: 'OW', name: 'Obwalden' },
+  { abbr: 'SH', name: 'Schaffhausen' },
+  { abbr: 'SZ', name: 'Schwyz' },
+  { abbr: 'SO', name: 'Solothurn' },
+  { abbr: 'SG', name: 'St.Gallen' },
+  { abbr: 'TI', name: 'Tessin' },
+  { abbr: 'TG', name: 'Thurgau' },
+  { abbr: 'UR', name: 'Uri' },
+  { abbr: 'VD', name: 'Waadt' },
+  { abbr: 'VS', name: 'Wallis' },
+  { abbr: 'ZG', name: 'Zug' },
+  { abbr: 'ZH', name: 'Zürich' },
 ]
 
 const getDataFromCasetype = (caseType) => {
@@ -48,28 +47,32 @@ const getDataFromCasetype = (caseType) => {
 cantonSelections.forEach(cantonSelection => {
   cantonSelection.addEventListener('click', (event) => {
     const element = event.target
-    const timeFrame = element.classList[1].includes('24h')
-      ? '24h' : element.classList[1].includes('total')
+    const timeFrame = element.classList[2].includes('24h')
+      ? '24h' : element.classList[2].includes('total')
       ? 'total' : 'userSpec'
-    const caseType = element.classList[1].includes('infected')
+    const caseType = element.classList[2].includes('infected')
       ? 'infected' : 'death'
-    const canton = element.innerHTML
+    const canton = element.innerHTML.substr(0,2)
 
     getData(canton, timeFrame, caseType)
   })
 })
 
-const updateUI = (data, selectedCanton, caseType) => {
+const convertDateFormat = (date) => {
+  const EUDateFormat = `${date.substr(8,2)}.${date.substr(5,2)}.${date.substr(0,4)}`
+  return EUDateFormat
+}
+
+const updateUI = (data, selectedCanton, caseType, dateFrom, dateTo) => {
   const highestCount = Math.max(...data.map(d => d.count))
-  console.log(data)
 
   data.forEach(d => {
     const bubble = document.getElementById(`bubble-${d.canton}`)
 
     const size = Math.floor(d.count / (highestCount / 100))
 
-    bubble.style.width = `${15 + size}px`
-    bubble.style.height = `${15 + size}px`
+    bubble.style.width = `${35 + (size/2)}px`
+    bubble.style.height = `${35 + (size/2)}px`
     bubble.style.backgroundColor = 'gray'
     if (bubble.id.includes(selectedCanton)) {
       bubble.style.backgroundColor = 'blue'
@@ -79,38 +82,51 @@ const updateUI = (data, selectedCanton, caseType) => {
     bubbleCases.innerHTML = d.count
 
 
-    const bar = document.getElementById(`bar-${caseType === 'infected' ? 'infected' : 'death'}-${d.canton}`)
+    const bar = document.getElementById(`bar-infected-${d.canton}`)
 
-    if (caseType === 'infected') {
-      chartInfected.style.display = 'block'
-      chartDeath.style.display = 'none'
-    } else {
-      chartInfected.style.display = 'none'
-      chartDeath.style.display = 'block'
-    }
     bar.style.backgroundColor = 'gray'
     if (bar.id.includes(selectedCanton)) {
       bar.style.backgroundColor = 'blue'
     }
-    bar.style.gridRowStart = `${100 - size}`
+
+    bar.style.height = `${size}%`
 
     const barCases = bar.querySelector('.bar-cases')
-    barCases.innerHTML = d.count
+    barCases.innerHTML = d.count >= 1000 ? `${Math.trunc(d.count/1000)}k` : d.count
 
   })
+
+  const chart = chartInfected
+
+  const chartTitle = chart.querySelector('h2')
+  chartTitle.innerHTML = caseType === 'infected'
+    ? 'Infizierte'
+    : 'Todesfälle'
+
+  const chartDate = chart.querySelector('h3')
+  dateFrom = convertDateFormat(dateFrom)
+  dateTo = convertDateFormat(dateTo)
+  chartDate.innerHTML = `${dateFrom} - ${dateTo}`
 }
 
 const getData = (selectedCanton, timeFrame, caseType) => {
   const data = getDataFromCasetype(caseType)
 
-  if (timeFrame === '24h') {
-    const filteredData = data
-      .filter(d => d.date === '2021-02-15') //TODO: Replace with today's date
+  
 
-    updateUI(filteredData, selectedCanton, caseType)
-  } else if (timeFrame === 'total'){
+  if (timeFrame === '24h') {
+    const dateToday = '2021-02-15' //TODO: Replace with today's date
+
     const filteredData = data
-      .filter(d => d.date === '2021-02-15') //TODO: Replace with today's date
+      .filter(d => d.date === dateToday)
+
+    updateUI(filteredData, selectedCanton, caseType, dateToday, dateToday)
+  } else if (timeFrame === 'total'){
+    const dateFrom = '2020-02-24'
+    const dateTo = '2021-02-15' //TODO: Replace with today's date
+
+    const filteredData = data
+      .filter(d => d.date === dateTo) 
       .map(d => {
         return {
           ...d,
@@ -118,17 +134,28 @@ const getData = (selectedCanton, timeFrame, caseType) => {
         }
       })
 
-    updateUI(filteredData, selectedCanton, caseType)
+    updateUI(filteredData, selectedCanton, caseType, dateFrom, dateTo)
   } else {
-    const startDate = inputDateFrom.value
-    const endDate = inputDateTo.value
+    const dateFrom = inputDateFrom.value
+    const dateTo = inputDateTo.value
 
-    const dates = getDatesBetweenDates(startDate, endDate)
-
-    const filteredData = data.filter(d => {
-      //TODO: Filter data to the date range and reduce the total count of incidence
+    let filteredData = data.filter(d => {
+      return d.date === dateFrom || d.date === dateTo
     })
-    console.log(dates)
+
+    filteredData = filteredData
+      .map((d, idx) => {
+        if(idx %2 === 0) {
+          return {
+            ...d,
+            count: filteredData[idx+1].total - filteredData[idx].total
+          }
+        }
+      })
+      .filter(d => d !== undefined) 
+    
+    updateUI(filteredData, selectedCanton, caseType, dateFrom, dateTo)
+
   }
 }
 
@@ -148,11 +175,7 @@ bubbles.forEach(bubble => {
 
     selectedBubble.style.backgroundColor = 'blue'
 
-    if (chartInfected.style.display === 'none') {
-      updateBarChart(chartDeath, canton)
-    } else {
-      updateBarChart(chartInfected, canton)
-    }
+    updateBarChart(chartInfected, canton)
   })
 })
 
@@ -181,7 +204,7 @@ const getBarsInArray = (parent) => {
 }
 
 const infectedBars = getBarsInArray(chartInfected)
-const deathBars = getBarsInArray(chartDeath)
+// const deathBars = getBarsInArray(chartDeath)
 
 const handleBarChartSelection = (bars, event) => {
   const selectedBar = event.currentTarget
@@ -205,11 +228,5 @@ const handleBarChartSelection = (bars, event) => {
 infectedBars.forEach(bar => {
   bar.addEventListener('click', (event) => {
     handleBarChartSelection(infectedBars, event)
-  })
-})
-
-deathBars.forEach(bar => {
-  bar.addEventListener('click', (event) => {
-    handleBarChartSelection(deathBars, event)
   })
 })
