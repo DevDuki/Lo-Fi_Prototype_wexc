@@ -118,11 +118,11 @@ const getCasesAmountInCantonUserSpec = (canton, data, dateFrom, dateTo) => {
 }
 
 const addDataToList = (ul, dateFrom = '2020-02-24', dateTo = '2021-02-15' /* TODO: Replace with today's date */) => {
-  const totalListTitle = ul.querySelector('.total-cases-title')
+  const totalListTitle    = ul.querySelector('.total-cases-title')
   const infectedListTitle = ul.querySelector('.infected-title')
-  const deathListTitle = ul.querySelector('.death-title')
-  const infectedCantons = ul.querySelectorAll('.canton-infected')
-  const deathCantons = ul.querySelectorAll('.canton-death')
+  const deathListTitle    = ul.querySelector('.death-title')
+  const infectedCantons   = ul.querySelectorAll('.canton-infected')
+  const deathCantons      = ul.querySelectorAll('.canton-death')
 
   let dateRange = 'total'
 

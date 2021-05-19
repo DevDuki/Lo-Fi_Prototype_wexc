@@ -73,9 +73,9 @@ const updateUI = (data, selectedCanton, caseType, dateFrom, dateTo) => {
 
     bubble.style.width = `${35 + (size/2)}px`
     bubble.style.height = `${35 + (size/2)}px`
-    bubble.style.backgroundColor = 'gray'
+    bubble.style.backgroundColor = 'var(--orange)'
     if (bubble.id.includes(selectedCanton)) {
-      bubble.style.backgroundColor = 'blue'
+      bubble.style.backgroundColor = 'var(--pink)'
     }
 
     const bubbleCases = bubble.querySelector('.bubble-cases')
@@ -84,9 +84,9 @@ const updateUI = (data, selectedCanton, caseType, dateFrom, dateTo) => {
 
     const bar = document.getElementById(`bar-infected-${d.canton}`)
 
-    bar.style.backgroundColor = 'gray'
+    bar.style.backgroundColor = 'var(--orange)'
     if (bar.id.includes(selectedCanton)) {
-      bar.style.backgroundColor = 'blue'
+      bar.style.backgroundColor = 'var(--pink)'
     }
 
     bar.style.height = `${size}%`
@@ -170,10 +170,10 @@ bubbles.forEach(bubble => {
     const canton = selectedBubble.querySelector('.bubble-canton').innerHTML
 
     bubbles.forEach(bubble => {
-      bubble.style.backgroundColor = 'gray'
+      bubble.style.backgroundColor = 'var(--orange)'
     })
 
-    selectedBubble.style.backgroundColor = 'blue'
+    selectedBubble.style.backgroundColor = 'var(--pink)'
 
     updateBarChart(chartInfected, canton)
   })
@@ -183,10 +183,10 @@ const updateBarChart = (chartContainer, selectedCanton) => {
   const bars = chartContainer.querySelector('.chart').children
   const barChilds = [...bars]
   barChilds.forEach(bar => {
-    bar.style.backgroundColor = 'gray'
+    bar.style.backgroundColor = 'var(--orange)'
 
     if (bar.id.endsWith(selectedCanton)) {
-      bar.style.backgroundColor = 'blue'
+      bar.style.backgroundColor = 'var(--pink)'
     }
   })
 }
@@ -204,23 +204,22 @@ const getBarsInArray = (parent) => {
 }
 
 const infectedBars = getBarsInArray(chartInfected)
-// const deathBars = getBarsInArray(chartDeath)
 
 const handleBarChartSelection = (bars, event) => {
   const selectedBar = event.currentTarget
   const canton = selectedBar.querySelector('.bar-canton').innerHTML
 
   bars.forEach(bar => {
-    bar.style.backgroundColor = 'gray'
+    bar.style.backgroundColor = 'var(--orange)'
   })
 
-  selectedBar.style.backgroundColor = 'blue'
+  selectedBar.style.backgroundColor = 'var(--pink)'
 
   bubbles.forEach(bubble => {
-    bubble.style.backgroundColor = 'gray'
+    bubble.style.backgroundColor = 'var(--orange)'
 
     if (bubble.id.endsWith(canton)) {
-      bubble.style.backgroundColor = 'blue'
+      bubble.style.backgroundColor = 'var(--pink)'
     }
   })
 }
@@ -228,5 +227,36 @@ const handleBarChartSelection = (bars, event) => {
 infectedBars.forEach(bar => {
   bar.addEventListener('click', (event) => {
     handleBarChartSelection(infectedBars, event)
+  })
+})
+
+
+
+//* Interaction with navbar
+
+const navbarCantons = document.querySelectorAll('.navbar__canton')
+
+const handleNavbarSelection = (navbarCantons, event) => {
+  const selectedNavCanton = event.currentTarget
+  const canton = selectedNavCanton.classList[3]
+
+  navbarCantons.forEach(navCanton => {
+    navCanton.style.color = 'var(--gray)'
+  })
+
+  selectedNavCanton.style.color = 'var(--pink)'
+
+  bubbles.forEach(bubble => {
+    bubble.style.backgroundColor = 'var(--orange)'
+
+    if (bubble.id.endsWith(canton)) {
+      bubble.style.backgroundColor = 'var(--pink)'
+    }
+  })
+}
+
+navbarCantons.forEach(navCanton => {
+  navCanton.addEventListener('click', (event) => {
+    handleNavbarSelection(navbarCantons, event)
   })
 })

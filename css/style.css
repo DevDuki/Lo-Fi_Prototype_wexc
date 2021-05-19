@@ -1,3 +1,13 @@
+:root {
+  --pink: #BC5090;
+  --orange: #FFA600;
+  --green: #C8F0D0;
+  --green-light: #BDFFCB;
+  --black: #222222;
+  --gray: #546056;
+  --white: #FCFCFC
+} 
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -19,9 +29,29 @@ main {
 }
 
 ul {
+  list-style-type: square;
   padding: 0;
   padding-left: 3rem;
   transition: all 0.15s ease-in-out;
+}
+
+span.death-title,
+span.infected-title,
+span.total-cases-title,
+ul.navbar__tertiary-list li {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+ul.navbar__tertiary-list li {
+  color: var(--gray);
+}
+
+span.death-title:hover,
+span.infected-title:hover,
+span.total-cases-title:hover,
+ul.navbar__tertiary-list li:hover {
+  opacity: 0.5;
 }
 
 .nav-section {
@@ -40,7 +70,7 @@ nav {
   position: fixed;
   max-width: 20vw;
   height: 100vh;
-  background: rgb(189, 189, 189);
+  background: var(--green);
   padding-left: 1rem;
   overflow-y: scroll;
 }
@@ -73,7 +103,7 @@ section.barchart {
 }
 
 .chart-table {
-  background-color: #eee;
+  background-color: var(--green);
   padding: 0 2rem;
   margin-bottom: 1rem;
   border-radius: 15px;
@@ -104,7 +134,7 @@ section.barchart h2 {
   height: 0%;
   min-height: 2%;
   border-radius: 5px 5px 0 0;
-  background-color: gray;
+  background-color: var(--orange);
   text-align: center;
   transition: all 0.2s ease-in-out;
 }
@@ -142,6 +172,7 @@ section.barchart h2 {
 }
 
 .bubble {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -150,7 +181,7 @@ section.barchart h2 {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: gray;
+  background-color: var(--orange);
   transform: translate(-50%, -50%);
   transition: all 0.2s ease-in-out;
 }
@@ -165,6 +196,10 @@ section.barchart h2 {
 
 .bubble-cases {
   font-size: 15px;
+}
+
+.bar {
+  cursor: pointer;
 }
 
 /* #chart {
@@ -207,3 +242,42 @@ table {
   padding: 5px;
   float: left;
 } */
+
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888;
+}
+
+
+
+/* DATEPICKER */
+
+
+#date-from {
+  height: 30px;
+  background: var(--green-light);
+  border: 0px;
+}
+
+
+#date-to {
+  height: 30px;
+  background: var(--green-light);
+  border: 0px;
+}
+
+
+/* hr */
+
+hr {
+  background: var(--black);
+  border: 5px solid var(--black);
+}

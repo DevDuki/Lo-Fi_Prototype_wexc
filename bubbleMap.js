@@ -1,6 +1,6 @@
 const coordinates = [
   { canton: 'AG', x: '486px', y: '96px' },
-  { canton: 'AR', x: '659px', y: '119px' },
+  { canton: 'AR', x: '672px', y: '110px' },
   { canton: 'AI', x: '708px', y: '140px' },
   { canton: 'BL', x: '420px', y: '115px' },
   { canton: 'BS', x: '392px', y: '74px' },
@@ -13,18 +13,18 @@ const coordinates = [
   { canton: 'LU', x: '480px', y: '185px' },
   { canton: 'NE', x: '265px', y: '208px' },
   { canton: 'NW', x: '527px', y: '223px' },
-  { canton: 'OW', x: '485px', y: '239px' },
+  { canton: 'OW', x: '475px', y: '250px' },
   { canton: 'SH', x: '557px', y: '34px' },
   { canton: 'SZ', x: '587px', y: '190px' },
-  { canton: 'SO', x: '392px', y: '150px' },
+  { canton: 'SO', x: '392px', y: '160px' },
   { canton: 'SG', x: '631px', y: '153px' },
   { canton: 'TI', x: '597px', y: '360px' },
-  { canton: 'TG', x: '624px', y: '72px' },
-  { canton: 'UR', x: '565px', y: '264px' },
+  { canton: 'TG', x: '637px', y: '62px' },
+  { canton: 'UR', x: '565px', y: '274px' },
   { canton: 'VD', x: '232px', y: '298px' },
   { canton: 'VS', x: '404px', y: '405px' },
   { canton: 'ZG', x: '547px', y: '162px' },
-  { canton: 'ZH', x: '580px', y: '114px' },
+  { canton: 'ZH', x: '564px', y: '98px' },
 ]
 
 const swissMap = document.querySelector('.swiss-map')
@@ -58,35 +58,35 @@ coordinates.forEach(coordinate => createBubble(coordinate))
 
 // For finding the coordinates on the image
 
-// let x, y = 0
+let x, y = 0
 
-// const getXYPos = element => {
-//   x = element.offsetLeft
-//   y = element.offsetTop
+const getXYPos = element => {
+  x = element.offsetLeft
+  y = element.offsetTop
 
-//   element = element.offsetParent
+  element = element.offsetParent
 
-//   while (element != null) {
-//     x = parseInt(x) + parseInt(element.offsetLeft)
-//     y = parseInt(y) + parseInt(element.offsetTop)
-//     element = element.offsetParent
-//   }
+  while (element != null) {
+    x = parseInt(x) + parseInt(element.offsetLeft)
+    y = parseInt(y) + parseInt(element.offsetTop)
+    element = element.offsetParent
+  }
 
-//   return { x, y }
-// }
+  return { x, y }
+}
 
-// const getCoord = (element, event) => {
-//   let xyPos = getXYPos(element)
+const getCoord = (element, event) => {
+  let xyPos = getXYPos(element)
 
-//   x = event.pageX
-//   y = event.pageY
+  x = event.pageX
+  y = event.pageY
 
-//   x = x - xyPos.x;
-//   y = y - xyPos.y;
+  x = x - xyPos.x;
+  y = y - xyPos.y;
 
-//   console.log('x', x, 'y', y)
-// }
+  console.log('x', x, 'y', y)
+}
 
-// swissMap.addEventListener('click', (event) => {
-//   getCoord(swissMap, event)
-// })
+swissMap.addEventListener('click', (event) => {
+  getCoord(swissMap, event)
+})

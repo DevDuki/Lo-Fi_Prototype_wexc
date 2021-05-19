@@ -4,9 +4,6 @@ const cantons = [...new Set(data.map(d => d.Kanton))]
 
 const infectedMarchData = data.filter(d => d.Falltyp === 'Infektion').filter(d => d.Datum === '2021-03-01')
 
-//chart colors
-
-const colors = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen'];
 
 //constants
 const TROW = 'tr',
